@@ -3,26 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio of Nicole John Dela Cruz, a creative and technical professional specializing in design, quality control, photo editing, web QA, and creative technology.">
-  <title>Nicole John Dela Cruz | Creative + Technical Professional</title>
+  <meta name="description" content="Portfolio of Nicole John Dela Cruz — web projects, browser extensions, quality control, design, and photo editing.">
+  <title>Nicole John Dela Cruz | Web & Creative Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07080d;
-      --bg-soft: #0b0d14;
-      --surface: rgba(18,21,31,.78);
-      --surface-solid: #11141d;
-      --text: #f5f7fb;
-      --muted: #9aa3b2;
-      --line: rgba(255,255,255,.10);
-      --pink: #ff4f9a;
-      --purple: #8b6cff;
-      --blue: #43b5ff;
-      --orange: #ff9f43;
-      --yellow: #ffe15a;
-      --mint: #5ee0c3;
-      --max: 1160px;
-      --radius: 24px;
-      --shadow: 0 22px 60px rgba(0,0,0,.35);
+      --bg: #070a0f;
+      --bg-soft: #0b1018;
+      --surface: rgba(14, 20, 30, .76);
+      --surface-solid: #101722;
+      --surface-2: #0d141e;
+      --text: #f4f7fb;
+      --muted: #96a1b1;
+      --muted-2: #6f7b8c;
+      --line: rgba(148, 163, 184, .13);
+      --line-strong: rgba(148, 163, 184, .22);
+      --cyan: #54d7ff;
+      --blue: #6c7cff;
+      --violet: #a875ff;
+      --green: #5de5ad;
+      --pink: #ff5fa8;
+      --max: 1180px;
+      --radius: 22px;
+      --shadow: 0 26px 70px rgba(0,0,0,.35);
     }
 
     * { box-sizing: border-box; }
@@ -31,181 +36,204 @@
       margin: 0;
       color: var(--text);
       background:
-        radial-gradient(circle at 8% 10%, rgba(255,79,154,.12), transparent 22rem),
-        radial-gradient(circle at 91% 18%, rgba(67,181,255,.12), transparent 24rem),
-        radial-gradient(circle at 78% 72%, rgba(94,224,195,.08), transparent 23rem),
-        linear-gradient(180deg,#07080d 0%,#090b11 100%);
+        radial-gradient(circle at 12% 0%, rgba(84,215,255,.10), transparent 26rem),
+        radial-gradient(circle at 90% 10%, rgba(168,117,255,.10), transparent 28rem),
+        linear-gradient(180deg, #070a0f 0%, #080c12 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.65;
       overflow-x: hidden;
     }
-    body.no-scroll { overflow: hidden; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      opacity: .22;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      left: var(--mx, 50%);
+      top: var(--my, 25%);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(84,215,255,.07), transparent 68%);
+      pointer-events: none;
+      z-index: -2;
+    }
     a { color: inherit; }
     img { max-width: 100%; display: block; }
-    ::selection { background: rgba(255,79,154,.30); color: #fff; }
-    :focus-visible { outline: 3px solid rgba(67,181,255,.55); outline-offset: 4px; }
-
+    ::selection { background: rgba(84,215,255,.22); color: #fff; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
     .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
     main { overflow: clip; }
-    section { scroll-margin-top: 92px; }
+    section { scroll-margin-top: 90px; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 
-    /* SECTION: NAVIGATION */
+    /* NAV */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(7,8,13,.76);
+      background: rgba(7,10,15,.72);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(18px);
     }
-    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { font-weight: 900; text-decoration: none; letter-spacing: -.035em; }
-    .brand-mark { display: inline-flex; align-items: center; gap: 9px; }
-    .brand-dot { width: 11px; height: 11px; border-radius: 50%; background: linear-gradient(135deg,var(--pink),var(--purple),var(--blue)); box-shadow: 0 0 18px rgba(139,108,255,.5); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -.035em; display: inline-flex; align-items: center; gap: 10px; }
+    .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 16px rgba(93,229,173,.6); }
+    .brand-type { font-size: .93rem; }
+    .brand-type::after { content: " / portfolio"; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-weight: 500; }
     .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: .94rem; font-weight: 750; transition: color .2s ease, transform .2s ease; }
-    .nav-links a:hover { color: var(--text); transform: translateY(-1px); }
-    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--surface-solid); color: var(--text); border-radius: 12px; padding: 9px 12px; font: inherit; font-weight: 800; cursor: pointer; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 600; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--text); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--surface-solid); color: var(--text); border-radius: 10px; padding: 8px 11px; font: inherit; font-weight: 700; cursor: pointer; }
 
-    /* SECTION: HERO */
-    .hero { position: relative; padding: 112px 0 92px; }
-    .hero::before, .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 999px; filter: blur(4px); opacity: .72; animation: drift 10s ease-in-out infinite alternate; }
-    .hero::before { width: 210px; height: 210px; top: 90px; right: -70px; background: linear-gradient(135deg, rgba(255,79,154,.24), rgba(139,108,255,.20)); box-shadow: 0 0 120px rgba(255,79,154,.08); }
-    .hero::after { width: 150px; height: 150px; left: -60px; bottom: 45px; background: linear-gradient(135deg, rgba(67,181,255,.20), rgba(94,224,195,.20)); animation-delay: -3s; }
-    .hero-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 72px; align-items: end; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; color: #b39fff; font-size: .83rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 900; }
-    .eyebrow::before { content: ""; width: 28px; height: 3px; border-radius: 999px; background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue)); box-shadow: 0 0 12px rgba(139,108,255,.35); }
-    .hero h1 { margin: 0; max-width: 900px; font-size: clamp(3.6rem, 8vw, 7.2rem); line-height: .9; letter-spacing: -.065em; }
-    .hero h1 .gradient { background: linear-gradient(100deg,var(--pink),#a47fff 43%,var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero-lead { margin: 28px 0 0; max-width: 700px; color: var(--muted); font-size: clamp(1.06rem, 1.55vw, 1.24rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 14px; text-decoration: none; font-weight: 850; border: 1px solid transparent; transition: transform .22s ease, box-shadow .22s ease, background .22s ease; }
-    .button:hover { transform: translateY(-3px); }
-    .button-primary { color: white; background: linear-gradient(100deg,var(--pink),var(--purple),var(--blue)); box-shadow: 0 14px 34px rgba(139,108,255,.25); }
-    .button-primary:hover { box-shadow: 0 20px 42px rgba(139,108,255,.36); }
-    .button-secondary { background: rgba(255,255,255,.04); border-color: var(--line); color: var(--text); }
-    .button-secondary:hover { background: rgba(255,255,255,.08); box-shadow: var(--shadow); }
-    .hero-aside { position: relative; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg,rgba(20,23,34,.92),rgba(13,16,24,.82)); box-shadow: var(--shadow); overflow: hidden; }
-    .hero-aside::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: linear-gradient(180deg,var(--pink),var(--purple),var(--blue)); box-shadow: 0 0 28px rgba(139,108,255,.28); }
-    .hero-aside::after { content: ""; position: absolute; width: 160px; height: 160px; right: -90px; top: -90px; border-radius: 50%; background: rgba(67,181,255,.10); }
-    .hero-aside p { margin: 0 0 16px; color: var(--muted); position: relative; z-index: 1; }
+    /* HERO */
+    .hero { position: relative; padding: 118px 0 105px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 70px; align-items: end; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; color: var(--cyan); font-size: .76rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 700; }
+    .eyebrow::before { content: "//"; color: var(--muted-2); font-family: "JetBrains Mono", monospace; }
+    .hero h1 { margin: 0; max-width: 900px; font-size: clamp(3.3rem, 7.7vw, 6.8rem); line-height: .94; letter-spacing: -.068em; font-weight: 800; }
+    .hero h1 .gradient { background: linear-gradient(105deg, var(--cyan), #8aa0ff 52%, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-lead { margin: 28px 0 0; max-width: 720px; color: var(--muted); font-size: clamp(1.03rem, 1.5vw, 1.18rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 17px; border-radius: 11px; text-decoration: none; font-weight: 700; font-size: .92rem; border: 1px solid transparent; transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: linear-gradient(110deg, #37c8f4, #6477ff); color: #081019; box-shadow: 0 12px 34px rgba(84,215,255,.16); }
+    .button-primary:hover { box-shadow: 0 16px 42px rgba(84,215,255,.23); }
+    .button-secondary { border-color: var(--line-strong); background: rgba(255,255,255,.025); color: var(--text); }
+    .button-secondary:hover { background: rgba(255,255,255,.055); }
+    .hero-aside { position: relative; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(16,23,34,.88), rgba(10,15,22,.82)); box-shadow: var(--shadow); overflow: hidden; }
+    .hero-aside::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 2px; background: linear-gradient(180deg, var(--cyan), var(--violet), var(--green)); }
+    .hero-aside::after { content: "</>"; position: absolute; right: 18px; top: 15px; color: rgba(255,255,255,.055); font-family: "JetBrains Mono", monospace; font-size: 3.2rem; font-weight: 700; }
+    .hero-aside p { margin: 0 0 17px; color: var(--muted); position: relative; z-index: 1; }
     .hero-aside p:last-child { margin-bottom: 0; }
     .hero-aside strong { color: var(--text); }
+    .status { display: inline-flex; align-items: center; gap: 7px; margin-top: 3px; padding: 6px 9px; border: 1px solid rgba(93,229,173,.18); border-radius: 8px; background: rgba(93,229,173,.05); color: #a9f5d4; font: 600 .72rem "JetBrains Mono", monospace; }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(93,229,173,.55); }
 
-    /* SECTION: FEATURED WORK */
-    .section { padding: 96px 0; border-top: 1px solid var(--line); }
-    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; }
-    .section-heading h2, .split h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -.055em; }
-    .section-heading p { margin: 0; max-width: 530px; color: var(--muted); }
-    .project { display: grid; grid-template-columns: 1.02fr .98fr; gap: 42px; align-items: center; padding: 40px 0; border-top: 1px solid var(--line); }
+    /* GENERAL */
+    .section { padding: 100px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 46px; }
+    .section-label { margin: 0 0 12px; color: var(--muted-2); font: 600 .72rem "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .12em; }
+    .section-heading h2, .split h2 { margin: 0; font-size: clamp(2.3rem, 4.7vw, 4rem); line-height: 1; letter-spacing: -.055em; font-weight: 800; }
+    .section-heading p { margin: 0; max-width: 540px; color: var(--muted); }
+
+    /* PROJECTS */
+    .project { display: grid; grid-template-columns: 1.02fr .98fr; gap: 44px; align-items: center; padding: 36px 0; border-top: 1px solid var(--line); }
     .project:first-of-type { border-top: 0; padding-top: 0; }
-    .project-visual { position: relative; min-height: 360px; padding: 30px; border: 1px solid rgba(139,108,255,.25); border-radius: 30px; display: flex; align-items: flex-end; overflow: hidden; box-shadow: var(--shadow); isolation: isolate; transition: transform .35s ease, box-shadow .35s ease; }
-    .project-visual:hover { transform: translateY(-7px) rotate(-.4deg); box-shadow: 0 30px 70px rgba(0,0,0,.48); }
-    .project-visual::before { content: ""; position: absolute; width: 250px; height: 250px; border-radius: 50%; background: rgba(255,255,255,.10); top: -70px; right: -55px; }
-    .project-visual::after { content: ""; position: absolute; width: 160px; height: 160px; border-radius: 45% 55% 48% 52%; background: rgba(255,255,255,.07); bottom: -60px; left: -25px; transform: rotate(24deg); }
-    .project-visual.sif { background: radial-gradient(circle at 85% 20%, rgba(255,79,154,.55), transparent 26%), radial-gradient(circle at 18% 80%, rgba(67,181,255,.45), transparent 30%), linear-gradient(135deg,#171222 0%,#111729 48%,#0c1820 100%); }
+    .project-visual { position: relative; min-height: 360px; padding: 28px; border: 1px solid var(--line); border-radius: 24px; display: flex; align-items: flex-end; overflow: hidden; box-shadow: var(--shadow); isolation: isolate; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
+    .project-visual:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: 0 32px 75px rgba(0,0,0,.44); }
+    .project-visual.sif { background: radial-gradient(circle at 82% 20%, rgba(108,124,255,.32), transparent 28%), radial-gradient(circle at 20% 78%, rgba(84,215,255,.22), transparent 32%), linear-gradient(135deg,#0d1722,#0b111a 52%,#13132a); }
+    .project-visual.meilong { background: radial-gradient(circle at 84% 16%, rgba(93,229,173,.24), transparent 25%), radial-gradient(circle at 15% 80%, rgba(84,215,255,.16), transparent 32%), linear-gradient(135deg,#0c1717,#0a1317 45%,#101525); }
+    .project-visual .noise { position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(rgba(255,255,255,.15) .7px, transparent .7px); background-size: 9px 9px; mask-image: linear-gradient(to bottom, transparent, black 28%, black 78%, transparent); z-index: -1; }
+    .project-code { position: absolute; top: 22px; right: 24px; color: rgba(255,255,255,.15); font: 600 .72rem "JetBrains Mono", monospace; }
+    .project-code span { color: var(--cyan); }
     .project-visual-inner { position: relative; z-index: 2; width: 100%; }
-    .project-kicker { display: inline-block; margin-bottom: 10px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.13); font-size: .78rem; font-weight: 900; color: #d5cbff; text-transform: uppercase; letter-spacing: .09em; }
-    .project-visual h3 { margin: 0; font-size: clamp(2.3rem, 5vw, 4rem); letter-spacing: -.06em; line-height: .95; }
-    .project-visual p { margin: 9px 0 0; color: #b7bdca; font-weight: 650; }
-    .project-copy h3 { margin: 0; font-size: 1.75rem; letter-spacing: -.03em; }
+    .project-kicker { display: inline-block; margin-bottom: 11px; padding: 5px 9px; border-radius: 7px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.10); color: #b9d9e4; font: 600 .69rem "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .07em; }
+    .project-visual h3 { margin: 0; font-size: clamp(2.2rem, 4.8vw, 3.8rem); letter-spacing: -.065em; line-height: .95; font-weight: 800; }
+    .project-visual p { margin: 10px 0 0; color: #a6b0be; font-weight: 500; }
+    .project-copy h3 { margin: 0; font-size: 1.58rem; letter-spacing: -.03em; font-weight: 750; }
     .project-copy p { color: var(--muted); max-width: 68ch; }
-    .project-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
-    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: rgba(255,255,255,.03); color: #d1d7e2; font-size: .82rem; font-weight: 800; }
-    .project-link { color: #b39fff; font-weight: 850; text-decoration-thickness: 1px; text-underline-offset: 5px; }
-    .project-link:hover { color: #d3c8ff; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0; }
+    .tag { border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px; background: rgba(255,255,255,.025); color: #c4ccd7; font: 500 .72rem "JetBrains Mono", monospace; }
+    .project-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .project-link { color: #9cdff4; font-weight: 700; text-decoration: none; font-size: .9rem; }
+    .project-link:hover { color: var(--cyan); }
 
-    /* SECTION: ABOUT */
-    .split { display: grid; grid-template-columns: .72fr 1.28fr; gap: 78px; }
+    /* ABOUT */
+    .split { display: grid; grid-template-columns: .72fr 1.28fr; gap: 80px; }
     .split p { margin: 0 0 18px; color: var(--muted); max-width: 70ch; }
     .highlight-line { position: relative; padding-left: 18px; }
-    .highlight-line::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 4px; border-radius: 999px; background: linear-gradient(180deg,var(--pink),var(--purple),var(--blue)); box-shadow: 0 0 18px rgba(139,108,255,.32); }
+    .highlight-line::before { content: ""; position: absolute; left: 0; top: .3em; bottom: .3em; width: 2px; border-radius: 999px; background: linear-gradient(180deg, var(--cyan), var(--violet)); }
 
-    /* SECTION: EXPERIENCE */
+    /* EXPERIENCE */
     .experience-item { display: grid; grid-template-columns: .43fr 1.57fr; gap: 44px; padding: 30px 0; border-top: 1px solid var(--line); }
     .experience-item:first-child { border-top: 0; padding-top: 0; }
-    .experience-date { color: #7f8998; font-size: .94rem; font-weight: 700; }
-    .experience-item h3 { margin: 0; font-size: 1.42rem; }
-    .experience-company { display: inline-block; margin: 5px 0 12px; font-weight: 850; color: #dfe4ed; }
+    .experience-date { color: var(--muted-2); font: 500 .75rem "JetBrains Mono", monospace; padding-top: 3px; }
+    .experience-item h3 { margin: 0; font-size: 1.28rem; font-weight: 750; }
+    .experience-company { display: inline-block; margin: 5px 0 12px; color: #dce3eb; font-size: .9rem; font-weight: 650; }
     .experience-item ul { margin: 0; padding-left: 18px; color: var(--muted); }
     .experience-item li { padding: 4px 0; }
 
-    /* SECTION: SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .skill-group { position: relative; padding: 26px; min-height: 180px; background: linear-gradient(145deg,rgba(18,21,31,.92),rgba(11,14,21,.82)); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 14px 36px rgba(0,0,0,.22); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .skill-group:hover { transform: translateY(-5px); box-shadow: 0 24px 50px rgba(0,0,0,.34); border-color: rgba(139,108,255,.28); }
-    .skill-group::after { content: ""; position: absolute; width: 90px; height: 90px; border-radius: 50%; right: -35px; bottom: -35px; opacity: .18; filter: blur(2px); }
-    .skill-group:nth-child(1)::after { background: var(--pink); }
-    .skill-group:nth-child(2)::after { background: var(--blue); }
-    .skill-group:nth-child(3)::after { background: var(--mint); }
-    .skill-group:nth-child(4)::after { background: var(--orange); }
-    .skill-group:nth-child(5)::after { background: var(--purple); }
-    .skill-group:nth-child(6)::after { background: var(--yellow); }
-    .skill-group h3 { margin: 0 0 13px; font-size: 1.08rem; }
-    .skill-group p { margin: 0; color: var(--muted); }
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .skill-group { position: relative; padding: 24px; min-height: 172px; background: linear-gradient(145deg, rgba(15,22,32,.85), rgba(10,15,22,.82)); border: 1px solid var(--line); border-radius: 17px; overflow: hidden; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+    .skill-group:hover { transform: translateY(-4px); border-color: var(--line-strong); background: linear-gradient(145deg, rgba(18,27,39,.93), rgba(10,16,24,.87)); }
+    .skill-group::before { content: attr(data-index); position: absolute; top: 15px; right: 17px; color: rgba(255,255,255,.10); font: 700 .68rem "JetBrains Mono", monospace; }
+    .skill-group h3 { margin: 0 0 11px; font-size: .98rem; font-weight: 750; }
+    .skill-group p { margin: 0; color: var(--muted); font-size: .9rem; }
 
-    /* SECTION: CONTACT */
-    .contact-wrap { position: relative; border-radius: 32px; padding: 48px; background: radial-gradient(circle at 85% 18%, rgba(255,216,77,.18), transparent 18rem), radial-gradient(circle at 18% 80%, rgba(255,79,154,.18), transparent 22rem), linear-gradient(120deg,#11121a 0%,#151322 48%,#0f1820 100%); border: 1px solid rgba(139,108,255,.25); overflow: hidden; box-shadow: var(--shadow); }
-    .contact-wrap::before { content: ""; position: absolute; width: 250px; height: 250px; right: -75px; top: -100px; border-radius: 50%; background: rgba(255,216,77,.10); }
-    .contact { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; }
-    .contact h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.7rem); line-height: .95; letter-spacing: -.06em; max-width: 780px; }
-    .contact p { margin: 18px 0 0; color: #aeb6c3; max-width: 650px; }
-    .contact-links { display: grid; gap: 9px; justify-items: start; }
-    .contact-links a { font-weight: 850; color: #c4b8ff; }
-    .contact-links a:hover { color: white; }
+    /* CONTACT */
+    .contact-wrap { position: relative; padding: 50px; border: 1px solid var(--line); border-radius: 27px; background: linear-gradient(145deg, rgba(14,21,31,.9), rgba(9,14,20,.8)); overflow: hidden; }
+    .contact-wrap::before { content: "GET IN TOUCH"; position: absolute; top: 24px; right: 28px; color: rgba(255,255,255,.055); font: 700 2.6rem "JetBrains Mono", monospace; }
+    .contact { display: flex; justify-content: space-between; gap: 50px; align-items: end; position: relative; z-index: 1; }
+    .contact h2 { margin: 0; max-width: 650px; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -.052em; }
+    .contact p:not(.eyebrow) { margin: 18px 0 0; max-width: 620px; color: var(--muted); }
+    .contact-links { min-width: 230px; display: grid; gap: 9px; }
+    .contact-links a { color: #c5edf9; text-decoration: none; font-weight: 650; }
+    .contact-links a:hover { color: var(--cyan); }
 
-    /* SECTION: FOOTER */
-    footer { padding: 34px 0 44px; color: #727c8c; font-size: .92rem; }
-    .footer-row { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+    /* FOOTER */
+    footer { border-top: 1px solid var(--line); padding: 28px 0 42px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; color: var(--muted-2); font: 500 .72rem "JetBrains Mono", monospace; }
 
-    /* ANIMATION */
-    .reveal { opacity: 0; transform: translateY(24px); animation: reveal .85s cubic-bezier(.2,.75,.25,1) forwards; }
-    .reveal.delay-1 { animation-delay: .10s; }
-    .reveal.delay-2 { animation-delay: .18s; }
-    .reveal.delay-3 { animation-delay: .26s; }
-    .float { animation: float 5s ease-in-out infinite; }
+    /* MOTION */
+    .reveal { opacity: 0; transform: translateY(18px); animation: reveal .7s ease forwards; animation-play-state: paused; }
+    .delay-1 { animation-delay: .08s; }
+    .delay-2 { animation-delay: .16s; }
+    .delay-3 { animation-delay: .24s; }
+    .float { animation: float 5.5s ease-in-out infinite; }
     @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    @keyframes drift { from { transform: translate3d(0,0,0) rotate(0deg); } to { transform: translate3d(0,-18px,0) rotate(8deg); } }
 
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero-grid, .project, .split, .contact { grid-template-columns: 1fr; }
+      .hero-grid, .project, .split { grid-template-columns: 1fr; }
       .hero-grid { gap: 42px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .experience-item { grid-template-columns: 1fr; gap: 10px; }
-      .contact-wrap { padding: 34px 28px; }
-      .contact-links { justify-items: start; }
+      .hero-aside { max-width: 640px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact { align-items: start; flex-direction: column; }
+      .contact-links { min-width: 0; }
     }
-
     @media (max-width: 720px) {
       .container { width: min(calc(100% - 28px), var(--max)); }
-      .hero { padding: 78px 0 64px; }
-      .section { padding: 68px 0; }
+      .hero { padding: 88px 0 80px; }
+      .hero h1 { font-size: clamp(3rem, 14vw, 5.4rem); }
+      .section { padding: 78px 0; }
       .section-heading { display: block; }
       .section-heading p { margin-top: 16px; }
-      .nav-links { display: none; position: absolute; left: 14px; right: 14px; top: 68px; padding: 14px; background: rgba(12,14,21,.98); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); flex-direction: column; align-items: stretch; }
+      .project-visual { min-height: 300px; }
+      .experience-item { grid-template-columns: 1fr; gap: 11px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-wrap { padding: 32px 24px; }
+      .contact-wrap::before { display: none; }
+      .footer-row { flex-direction: column; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 14px 20px 18px; background: rgba(7,10,15,.96); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 14px; }
       .nav-links.is-open { display: flex; }
-      .nav-links a { padding: 8px 6px; }
-      .menu-toggle { display: inline-flex; }
-      .project-visual { min-height: 290px; }
-      .contact h2 { font-size: clamp(2.35rem, 12vw, 3.7rem); }
-      .footer-row { display: block; }
-      .footer-row span { display: block; margin-top: 6px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Primary navigation">
-      <a class="brand" href="#top"><span class="brand-mark"><span class="brand-dot" aria-hidden="true"></span>Nicole John Dela Cruz</span></a>
+      <a class="brand" href="#top"><span class="brand-dot" aria-hidden="true"></span><span class="brand-type">Nicole John Dela Cruz</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
-        <a href="#work">Work</a>
+        <a href="#work">Projects</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
@@ -215,87 +243,120 @@
   </header>
 
   <main id="top">
-    <!-- SECTION: HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="reveal">
-          <p class="eyebrow">Creative + technical professional</p>
-          <h1 id="hero-title">Design that feels <span class="gradient">thoughtful.</span> Work that's built to be checked.</h1>
-          <p class="hero-lead">I’m Nicole John Dela Cruz, based in Cebu City. I work across design, quality control, photo editing, web QA, and creative technology, with a focus on dependable remote work.</p>
+          <p class="eyebrow mono">web + creative technology</p>
+          <h1 id="hero-title">Building useful things with <span class="gradient">creative detail.</span></h1>
+          <p class="hero-lead">I’m Nicole John Dela Cruz, based in Cebu City. I work across web projects, browser extensions, quality control, photo editing, and design — combining careful execution with a growing focus on practical programming.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">Explore my work</a>
-            <a class="button button-secondary" href="mailto:njuandelacruz@gmail.com">Get in touch</a>
+            <a class="button button-primary" href="#work">View projects</a>
+            <a class="button button-secondary" href="mailto:njuandelacruz@gmail.com">Contact me</a>
           </div>
         </div>
         <aside class="hero-aside reveal delay-2 float" aria-label="Professional summary">
+          <span class="status"><i aria-hidden="true"></i> open to remote opportunities</span>
           <p><strong>Based in</strong><br>Cebu City, Philippines</p>
-          <p><strong>Looking for</strong><br>Remote creative + technical roles</p>
-          <p><strong>Strengths</strong><br>Design QA · photo editing · web QA · process accuracy</p>
+          <p><strong>Focus</strong><br>Web development · browser tools · QA · creative technology</p>
+          <p><strong>Approach</strong><br>Detail-oriented, quick to learn, process-focused, and willing to be trained.</p>
         </aside>
       </div>
     </section>
 
-    <!-- SECTION: FEATURED WORK -->
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
         <div class="section-heading reveal">
-          <h2 id="work-title">Selected work</h2>
-          <p>A focused starting point. More design and photo editing work can be added as new portfolio assets become available.</p>
+          <div>
+            <p class="section-label mono">01 / selected work</p>
+            <h2 id="work-title">Projects</h2>
+          </div>
+          <p>Hands-on projects that show both my visual background and my ability to build practical web and browser-based tools.</p>
         </div>
 
         <article class="project reveal delay-1">
           <div class="project-visual sif" aria-label="SIF Tracker project visual">
+            <span class="project-code mono">web<span>://</span>app</span>
+            <div class="noise" aria-hidden="true"></div>
             <div class="project-visual-inner">
-              <span class="project-kicker">Web project</span>
+              <span class="project-kicker mono">web application</span>
               <h3>SIF Tracker</h3>
-              <p>Live project · Vercel deployment</p>
+              <p>Live Vercel deployment</p>
             </div>
           </div>
           <div class="project-copy">
             <h3>SIF Tracker</h3>
-            <p>A web project created by Nicole and published as a live Vercel site. It represents the web and creative-technology side of the portfolio.</p>
+            <p>A live web project created as a practical exercise in building an interface, connecting the pieces of a working site, and shipping it through Vercel.</p>
             <div class="project-meta">
-              <span class="tag">Web development</span>
-              <span class="tag">Creative technology</span>
-              <span class="tag">Live project</span>
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Web UI</span>
+              <span class="tag">Vercel</span>
             </div>
-            <a class="project-link" href="https://sif-tracker-omega.vercel.app/" target="_blank" rel="noreferrer">Open live project ↗</a>
+            <div class="project-links">
+              <a class="project-link" href="https://sif-tracker-omega.vercel.app/" target="_blank" rel="noreferrer">Live project ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project reveal delay-2">
+          <div class="project-visual meilong" aria-label="Meilong Scissors Counter project visual">
+            <span class="project-code mono">ext<span>://</span>v5</span>
+            <div class="noise" aria-hidden="true"></div>
+            <div class="project-visual-inner">
+              <span class="project-kicker mono">browser extension</span>
+              <h3>Meilong<br>Scissors Counter</h3>
+              <p>Chrome / Edge · Manifest V3</p>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Meilong Scissors Counter</h3>
+            <p>A custom browser extension I built for the Sports In Focus event gallery. It helps select, count, highlight, and clear clipped individual and team photos while adding a persistent floating workflow panel.</p>
+            <div class="project-meta">
+              <span class="tag">Manifest V3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Chrome / Edge</span>
+              <span class="tag">Storage API</span>
+              <span class="tag">Popup UI</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/nicolelodeontv/meilongscissors" target="_blank" rel="noreferrer">View on GitHub ↗</a>
+            </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- SECTION: ABOUT -->
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container split">
         <div class="reveal">
-          <p class="eyebrow">A little context</p>
+          <p class="section-label mono">02 / about</p>
           <h2 id="about-title">Creative detail meets technical care.</h2>
         </div>
         <div class="reveal delay-1">
-          <p class="highlight-line">I work across design, quality control, photo editing, and web-related tasks. My experience has taught me to pay close attention to details, follow standards, spot issues early, and keep work moving toward a clear final result.</p>
-          <p>I’m interested in remote work where organization, communication, problem solving, and practical technical skills matter. I learn new tools quickly, work well with defined processes, and enjoy improving how creative work gets done.</p>
-          <p>I’m also exploring Virtual Assistant opportunities where these skills can support day-to-day operations, creative production, and reliable remote collaboration.</p>
+          <p class="highlight-line">I work across design, quality control, photo editing, and web-related tasks. That background trained me to notice small problems, follow standards, test carefully, and keep work moving toward a reliable final result.</p>
+          <p>I’m now putting more of that mindset into web development and practical programming projects. I enjoy taking repetitive or manual tasks and turning them into clearer workflows, useful tools, and simple interfaces.</p>
+          <p>I’m also open to Virtual Assistant opportunities where organization, communication, technical curiosity, and dependable execution are valuable.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: EXPERIENCE -->
     <section class="section" id="experience" aria-labelledby="experience-title">
       <div class="container">
         <div class="section-heading reveal">
-          <h2 id="experience-title">Experience</h2>
-          <p>Professional experience across design production, quality control, website testing, and photo editing.</p>
+          <div>
+            <p class="section-label mono">03 / experience</p>
+            <h2 id="experience-title">Experience</h2>
+          </div>
+          <p>Professional experience across creative production, quality control, website testing, and image editing.</p>
         </div>
 
         <article class="experience-item reveal delay-1">
-          <div class="experience-date">Feb 2019 — Present</div>
+          <div class="experience-date">2019 — Present</div>
           <div>
             <h3>Design Associate / Quality Control</h3>
             <div class="experience-company">RIPECONCEPTS INC. (MINTED)</div>
             <ul>
               <li>Interpret and evaluate client design requirements, objectives, preferences, and brand guidelines.</li>
-              <li>Review creative work for accuracy, consistency, layout, typography, and overall visual quality.</li>
+              <li>Review creative work for accuracy, consistency, layout, typography, and visual quality.</li>
               <li>Conduct detailed quality-control checks and resolve design issues before final delivery.</li>
               <li>Support customers and collaborate with teams to improve design accuracy, workflow efficiency, and customer experience.</li>
             </ul>
@@ -303,7 +364,7 @@
         </article>
 
         <article class="experience-item reveal delay-2">
-          <div class="experience-date">Apr 2017 — Oct 2018</div>
+          <div class="experience-date">2017 — 2018</div>
           <div>
             <h3>Quality Control Specialist</h3>
             <div class="experience-company">CML MOPRO PH</div>
@@ -317,7 +378,7 @@
         </article>
 
         <article class="experience-item reveal delay-1">
-          <div class="experience-date">Jun 2017 — Oct 2017</div>
+          <div class="experience-date">2017</div>
           <div>
             <h3>Photo Editor</h3>
             <div class="experience-company">SPORTS IN FOCUS — Remote</div>
@@ -331,7 +392,7 @@
         </article>
 
         <article class="experience-item reveal delay-2">
-          <div class="experience-date">May 2016 — Jul 2016</div>
+          <div class="experience-date">2016</div>
           <div>
             <h3>Photo Editor</h3>
             <div class="experience-company">PHOTOUP</div>
@@ -346,36 +407,38 @@
       </div>
     </section>
 
-    <!-- SECTION: SKILLS -->
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <div class="section-heading reveal">
-          <h2 id="skills-title">Skills & software</h2>
-          <p>A practical mix of creative production, quality control, web work, and professional workflow skills.</p>
+          <div>
+            <p class="section-label mono">04 / toolkit</p>
+            <h2 id="skills-title">Skills & software</h2>
+          </div>
+          <p>A practical mix of creative production, QA, web work, and professional workflow skills.</p>
         </div>
         <div class="skills-grid">
-          <article class="skill-group reveal delay-1"><h3>Design & Creative</h3><p>Graphic design · photo editing & retouching · image enhancement · visual consistency · brand standards · website design</p></article>
-          <article class="skill-group reveal delay-2"><h3>Web & Technology</h3><p>Web development · website QA · responsive web testing · AI automation · creative workflow automation</p></article>
-          <article class="skill-group reveal delay-3"><h3>Professional</h3><p>Attention to detail · problem solving · client support · quality assurance · deadline management · process improvement</p></article>
-          <article class="skill-group reveal delay-1"><h3>Adobe</h3><p>Photoshop · Illustrator · Lightroom · InDesign</p></article>
-          <article class="skill-group reveal delay-2"><h3>Workflow</h3><p>Learning new tools · following defined processes · handling repetitive tasks · maintaining consistency</p></article>
-          <article class="skill-group reveal delay-3"><h3>Remote-ready</h3><p>Clear communication · dependable execution · organized work · flexible collaboration · willingness to be trained</p></article>
+          <article class="skill-group reveal delay-1" data-index="01"><h3>Web & Development</h3><p>HTML · CSS · JavaScript · responsive web work · browser extensions · practical web UI</p></article>
+          <article class="skill-group reveal delay-2" data-index="02"><h3>QA & Testing</h3><p>Website QA · cross-browser checks · usability review · issue spotting · visual validation · process accuracy</p></article>
+          <article class="skill-group reveal delay-3" data-index="03"><h3>Creative</h3><p>Graphic design · photo editing · retouching · image enhancement · website design · visual consistency</p></article>
+          <article class="skill-group reveal delay-1" data-index="04"><h3>Adobe</h3><p>Photoshop · Illustrator · Lightroom · InDesign</p></article>
+          <article class="skill-group reveal delay-2" data-index="05"><h3>Workflow</h3><p>Automation mindset · repetitive-task improvement · defined processes · documentation · deadline management</p></article>
+          <article class="skill-group reveal delay-3" data-index="06"><h3>Remote-ready</h3><p>Clear communication · dependable execution · quick learning · flexible collaboration · willingness to be trained</p></article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: CONTACT -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact-wrap reveal">
           <div class="contact">
             <div>
-              <p class="eyebrow">Let's work together</p>
-              <h2 id="contact-title">Looking for someone who cares about the details?</h2>
-              <p>I’m open to remote opportunities that bring together creative work, quality control, web tasks, and reliable day-to-day support.</p>
+              <p class="eyebrow mono">available for opportunities</p>
+              <h2 id="contact-title">Let’s build something useful.</h2>
+              <p>I’m open to remote roles that bring together web work, quality control, creative production, and reliable technical support.</p>
             </div>
             <div class="contact-links">
               <a href="mailto:njuandelacruz@gmail.com">njuandelacruz@gmail.com ↗</a>
+              <a href="https://github.com/nicolelodeontv" target="_blank" rel="noreferrer">github.com/nicolelodeontv ↗</a>
               <a href="tel:+639770648530">+63 977 064 8530</a>
               <a href="#top">Back to top ↑</a>
             </div>
@@ -385,11 +448,10 @@
     </section>
   </main>
 
-  <!-- SECTION: FOOTER -->
   <footer>
     <div class="container footer-row">
       <span>© 2026 Nicole John Dela Cruz</span>
-      <span>Cebu City · Creative + Technical Professional</span>
+      <span>Cebu City · Web & Creative Technology</span>
     </div>
   </footer>
 
@@ -409,8 +471,12 @@
       });
     });
 
-    const supportsObserver = 'IntersectionObserver' in window;
-    if (supportsObserver) {
+    document.addEventListener('pointermove', (event) => {
+      document.documentElement.style.setProperty('--mx', `${event.clientX}px`);
+      document.documentElement.style.setProperty('--my', `${event.clientY}px`);
+    });
+
+    if ('IntersectionObserver' in window) {
       document.querySelectorAll('.reveal').forEach((el) => {
         el.style.animationPlayState = 'paused';
       });
