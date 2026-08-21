@@ -23,15 +23,15 @@ Secondary: employers and recruiters.
 A creative and technical professional who combines design quality control, photo editing, web QA, web work, and process-focused execution.
 
 ## Visual Direction
-Simple, professional, modern, and easy to scan. Strong typography, generous spacing, clear hierarchy, restrained motion, neutral surfaces, and no unnecessary decorative effects.
+Colorful, modern, energetic, and polished. Strong typography, generous spacing, gradient accents, playful abstract shapes, subtle motion, accessible contrast, and clear hierarchy. Use color and animation to add personality without distracting from the work.
 
 ## Portfolio Sections
 Navigation, Hero, Selected Work, About, Experience, Skills & Tools, Contact, Footer.
 
 ## Featured Projects
 SIF Tracker: https://sif-tracker-omega.vercel.app/
-GitHub repositories: https://github.com/nicolelodeontv?tab=repositories
 More projects and creative samples: TBD.
+GitHub is intentionally not presented as portfolio work.
 
 ## Experience
 RIPECONCEPTS INC. (MINTED) — Design Associate / Quality Control — February 7, 2019 – Present.
@@ -52,10 +52,10 @@ Primary CTA: Get in touch about remote opportunities.
 No portfolio asset files provided yet. Professional photo, resume, design samples, photo-editing samples, certificates/training, and additional project visuals: TBD.
 
 ## Functionality
-Single self-contained index.html. Responsive navigation with mobile menu, anchor navigation, accessible focus states, responsive layouts, mailto and tel contact links, reduced-motion support. No build system or external dependencies.
+Single self-contained index.html. Responsive navigation with mobile menu, anchor navigation, accessible focus states, scroll reveal animations, subtle floating and hover effects, responsive layouts, mailto and tel contact links, reduced-motion support. No build system or external dependencies.
 
 ## Avoid
-Do not invent experience, clients, projects, awards, certifications, metrics, testimonials, education, skills, or social proof. Avoid generic AI portfolio copy, excessive gradients, glassmorphism, unnecessary animation, fake project screenshots, and decorative elements that distract from work.
+Do not invent experience, clients, projects, awards, certifications, metrics, testimonials, education, skills, or social proof. Avoid fake project screenshots and decorative effects that distract from work.
 
 ## Current Decisions
-Use a hybrid creative + technical positioning. Prioritize remote hiring. Keep the design simple and evidence-led. Use the SIF Tracker and GitHub profile as the initial featured work. Add other materials only when provided by Nicole. The external design/copy references were reviewed for the initial build; reload them only for major future design or copy work.
+Use a hybrid creative + technical positioning. Prioritize remote hiring. Keep the experience evidence-led while using a more colorful and expressive visual system. Keep SIF Tracker as the only current featured project. GitHub work has been removed from the portfolio presentation. Add other materials only when provided by Nicole.
