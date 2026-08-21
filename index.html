@@ -76,7 +76,6 @@
     section { scroll-margin-top: 90px; }
     .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 
-    /* NAV */
     .site-header {
       position: sticky;
       top: 0;
@@ -95,7 +94,6 @@
     .nav-links a:hover { color: var(--text); }
     .menu-toggle { display: none; border: 1px solid var(--line); background: var(--surface-solid); color: var(--text); border-radius: 10px; padding: 8px 11px; font: inherit; font-weight: 700; cursor: pointer; }
 
-    /* HERO */
     .hero { position: relative; padding: 118px 0 105px; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 70px; align-items: end; }
     .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; color: var(--cyan); font-size: .76rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 700; }
@@ -119,14 +117,12 @@
     .status { display: inline-flex; align-items: center; gap: 7px; margin-top: 3px; padding: 6px 9px; border: 1px solid rgba(93,229,173,.18); border-radius: 8px; background: rgba(93,229,173,.05); color: #a9f5d4; font: 600 .72rem "JetBrains Mono", monospace; }
     .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(93,229,173,.55); }
 
-    /* GENERAL */
     .section { padding: 100px 0; border-top: 1px solid var(--line); }
     .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 46px; }
     .section-label { margin: 0 0 12px; color: var(--muted-2); font: 600 .72rem "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .12em; }
     .section-heading h2, .split h2 { margin: 0; font-size: clamp(2.3rem, 4.7vw, 4rem); line-height: 1; letter-spacing: -.055em; font-weight: 800; }
     .section-heading p { margin: 0; max-width: 540px; color: var(--muted); }
 
-    /* PROJECTS */
     .project { display: grid; grid-template-columns: 1.02fr .98fr; gap: 44px; align-items: center; padding: 36px 0; border-top: 1px solid var(--line); }
     .project:first-of-type { border-top: 0; padding-top: 0; }
     .project-visual { position: relative; min-height: 360px; padding: 28px; border: 1px solid var(--line); border-radius: 24px; display: flex; align-items: flex-end; overflow: hidden; box-shadow: var(--shadow); isolation: isolate; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
@@ -148,13 +144,11 @@
     .project-link { color: #9cdff4; font-weight: 700; text-decoration: none; font-size: .9rem; }
     .project-link:hover { color: var(--cyan); }
 
-    /* ABOUT */
     .split { display: grid; grid-template-columns: .72fr 1.28fr; gap: 80px; }
     .split p { margin: 0 0 18px; color: var(--muted); max-width: 70ch; }
     .highlight-line { position: relative; padding-left: 18px; }
     .highlight-line::before { content: ""; position: absolute; left: 0; top: .3em; bottom: .3em; width: 2px; border-radius: 999px; background: linear-gradient(180deg, var(--cyan), var(--violet)); }
 
-    /* EXPERIENCE */
     .experience-item { display: grid; grid-template-columns: .43fr 1.57fr; gap: 44px; padding: 30px 0; border-top: 1px solid var(--line); }
     .experience-item:first-child { border-top: 0; padding-top: 0; }
     .experience-date { color: var(--muted-2); font: 500 .75rem "JetBrains Mono", monospace; padding-top: 3px; }
@@ -163,7 +157,6 @@
     .experience-item ul { margin: 0; padding-left: 18px; color: var(--muted); }
     .experience-item li { padding: 4px 0; }
 
-    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
     .skill-group { position: relative; padding: 24px; min-height: 172px; background: linear-gradient(145deg, rgba(15,22,32,.85), rgba(10,15,22,.82)); border: 1px solid var(--line); border-radius: 17px; overflow: hidden; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
     .skill-group:hover { transform: translateY(-4px); border-color: var(--line-strong); background: linear-gradient(145deg, rgba(18,27,39,.93), rgba(10,16,24,.87)); }
@@ -171,7 +164,6 @@
     .skill-group h3 { margin: 0 0 11px; font-size: .98rem; font-weight: 750; }
     .skill-group p { margin: 0; color: var(--muted); font-size: .9rem; }
 
-    /* CONTACT */
     .contact-wrap { position: relative; padding: 50px; border: 1px solid var(--line); border-radius: 27px; background: linear-gradient(145deg, rgba(14,21,31,.9), rgba(9,14,20,.8)); overflow: hidden; }
     .contact-wrap::before { content: "GET IN TOUCH"; position: absolute; top: 24px; right: 28px; color: rgba(255,255,255,.055); font: 700 2.6rem "JetBrains Mono", monospace; }
     .contact { display: flex; justify-content: space-between; gap: 50px; align-items: end; position: relative; z-index: 1; }
@@ -181,11 +173,9 @@
     .contact-links a { color: #c5edf9; text-decoration: none; font-weight: 650; }
     .contact-links a:hover { color: var(--cyan); }
 
-    /* FOOTER */
     footer { border-top: 1px solid var(--line); padding: 28px 0 42px; }
     .footer-row { display: flex; justify-content: space-between; gap: 20px; color: var(--muted-2); font: 500 .72rem "JetBrains Mono", monospace; }
 
-    /* MOTION */
     .reveal { opacity: 0; transform: translateY(18px); animation: reveal .7s ease forwards; animation-play-state: paused; }
     .delay-1 { animation-delay: .08s; }
     .delay-2 { animation-delay: .16s; }
@@ -194,7 +184,6 @@
     @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-grid, .project, .split { grid-template-columns: 1fr; }
       .hero-grid { gap: 42px; }
@@ -293,6 +282,7 @@
             </div>
             <div class="project-links">
               <a class="project-link" href="https://sif-tracker-omega.vercel.app/" target="_blank" rel="noreferrer">Live project ↗</a>
+              <a class="project-link" href="https://github.com/nicolelodeontv/siftracker" target="_blank" rel="noreferrer">View on GitHub ↗</a>
             </div>
           </div>
         </article>
