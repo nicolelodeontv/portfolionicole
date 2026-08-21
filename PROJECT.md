@@ -23,7 +23,7 @@ Secondary: employers and recruiters.
 A creative and technical professional who combines design quality control, photo editing, web QA, web work, and process-focused execution.
 
 ## Visual Direction
-Colorful, modern, energetic, and polished. Strong typography, generous spacing, gradient accents, playful abstract shapes, subtle motion, accessible contrast, and clear hierarchy. Use color and animation to add personality without distracting from the work.
+Dark, modern, energetic, and polished. Deep charcoal background, high-contrast typography, neon pink/purple/blue accents, subtle glow effects, generous spacing, clear hierarchy, and restrained motion. Keep the colorful identity while making dark mode the primary visual system.
 
 ## Portfolio Sections
 Navigation, Hero, Selected Work, About, Experience, Skills & Tools, Contact, Footer.
@@ -58,4 +58,4 @@ Single self-contained index.html. Responsive navigation with mobile menu, anchor
 Do not invent experience, clients, projects, awards, certifications, metrics, testimonials, education, skills, or social proof. Avoid fake project screenshots and decorative effects that distract from work.
 
 ## Current Decisions
-Use a hybrid creative + technical positioning. Prioritize remote hiring. Keep the experience evidence-led while using a more colorful and expressive visual system. Keep SIF Tracker as the only current featured project. GitHub work has been removed from the portfolio presentation. Add other materials only when provided by Nicole.
+Use a hybrid creative + technical positioning. Prioritize remote hiring. Keep the experience evidence-led while using a dark, colorful, expressive visual system. Keep SIF Tracker as the only current featured project. GitHub work has been removed from the portfolio presentation. Add other materials only when provided by Nicole.
