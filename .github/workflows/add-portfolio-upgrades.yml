@@ -1,0 +1,127 @@
+name: Add portfolio upgrades
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply AITMPL-inspired portfolio upgrades
+        shell: python
+        run: |
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          css = r'''
+    /* AITMPL-inspired portfolio upgrades */
+    .project-filter{display:flex;flex-wrap:wrap;gap:8px;margin:-22px 0 26px;}
+    .project-filter button{min-height:42px;padding:0 13px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted);font:700 .78rem "JetBrains Mono",monospace;cursor:pointer;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease;}
+    .project-filter button:hover{color:var(--text);border-color:var(--line-strong);transform:translateY(-1px)}
+    .project-filter button.is-active{color:#071019;background:var(--cyan);border-color:var(--cyan)}
+    .project.is-filtered-out{display:none}
+    .case-study{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+    .case-study summary{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;color:#c9f1fb;font-weight:750;font-size:.88rem;}
+    .case-study summary::-webkit-details-marker{display:none}
+    .case-study summary::after{content:"+";flex:0 0 auto;color:var(--cyan);font:700 1rem "JetBrains Mono",monospace}
+    .case-study[open] summary::after{content:"−"}
+    .case-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:15px}
+    .case-study-item{padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+    .case-study-item strong{display:block;margin-bottom:5px;color:var(--text);font:700 .7rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+    .case-study-item span{display:block;color:var(--muted);font-size:.85rem;line-height:1.55}
+    @media(max-width:720px){.project-filter{margin:-10px 0 20px}.project-filter button{flex:1 1 auto}.case-study-grid{grid-template-columns:1fr}.case-study summary{font-size:.84rem}}
+    @media(prefers-reduced-motion:reduce){.project-filter button{transition:none}}
+'''
+
+          marker = '</style>'
+          if '/* AITMPL-inspired portfolio upgrades */' not in s:
+              s = s.replace(marker, css + marker, 1)
+
+          filter_html = '''
+      <div class="project-filter reveal delay-1" role="group" aria-label="Filter projects">
+        <button type="button" class="is-active" data-project-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-project-filter="web" aria-pressed="false">Web</button>
+        <button type="button" data-project-filter="tools" aria-pressed="false">Tools</button>
+        <button type="button" data-project-filter="creative" aria-pressed="false">Creative</button>
+      </div>
+'''
+          target = '      <div class="project reveal delay-1">'
+          if 'data-project-filter="all"' not in s:
+              s = s.replace(target, filter_html + target, 1)
+
+          replacements = {
+              '<article class="project-visual sif"': '<article class="project-visual sif" data-project-category="web tools"',
+              '<article class="project-visual meilong"': '<article class="project-visual meilong" data-project-category="tools creative"',
+              '<article class="project-visual nztracker"': '<article class="project-visual nztracker" data-project-category="web tools"',
+              '<article class="project-visual backerfee"': '<article class="project-visual backerfee" data-project-category="web tools"',
+          }
+          for old,new in replacements.items():
+              s = s.replace(old,new,1)
+
+          case_studies = [
+              ("SIF Tracker", "Turn workload inputs into one clear, usable estimate.", "Build a compact interface that makes repetitive calculations easier to follow.", "A live web tool focused on practical workflow support and readable UI."),
+              ("Meilong Scissors Counter", "Make photo selection and counting less manual inside an event gallery.", "Use a browser extension workflow to select, count, highlight, and clear clipped photos.", "A persistent floating panel that keeps the workflow available while browsing."),
+              ("Ninja Zenshin Live Clan Tracker", "Bring live clan information together instead of checking separate views.", "Combine rankings, member information, reputation changes, server time, and season context in one dashboard.", "A responsive monitoring interface designed for quick scanning during active play."),
+              ("Backer Fee Assistant", "Make fee calculations and customer-ready wording faster and more consistent.", "Calculate discounted backer fees, keep recent calculations available, and generate copy-ready notes.", "A browser-only utility with presets, reset support, and exact-format clipboard copying."),
+          ]
+
+          for title, problem, process, solution in case_studies:
+              needle = '<div class="project-meta">'
+              start = s.find(needle)
+              while start != -1:
+                  # Find the end of this project-meta block, then the next project-copy heading.
+                  end = s.find('</div>', start)
+                  if end == -1:
+                      break
+                  insert_at = end + len('</div>')
+                  # Match the nearby project heading so the right case study lands in the right card.
+                  window = s[max(0,start-500):start]
+                  if f'<h3>{title}</h3>' in window:
+                      block = f'''\n          <details class="case-study">\n            <summary>View project case study</summary>\n            <div class="case-study-grid">\n              <div class="case-study-item"><strong>Problem</strong><span>{problem}</span></div>\n              <div class="case-study-item"><strong>Process</strong><span>{process}</span></div>\n              <div class="case-study-item"><strong>Solution</strong><span>{solution}</span></div>\n            </div>\n          </details>'''
+                      if 'class="case-study"' not in s[insert_at:insert_at+700]:
+                          s = s[:insert_at] + block + s[insert_at:]
+                      break
+                  start = s.find(needle, end + 1)
+
+          js = r'''
+    const projectFilterButtons=document.querySelectorAll('[data-project-filter]');
+    const projectCards=[...document.querySelectorAll('.project-visual[data-project-category]')];
+    projectFilterButtons.forEach(button=>button.addEventListener('click',()=>{
+      const filter=button.dataset.projectFilter||'all';
+      projectFilterButtons.forEach(item=>{
+        const active=item===button;
+        item.classList.toggle('is-active',active);
+        item.setAttribute('aria-pressed',String(active));
+      });
+      projectCards.forEach(card=>{
+        const row=card.parentElement;
+        const copy=card.nextElementSibling;
+        const visible=filter==='all'||(card.dataset.projectCategory||'').split(/\s+/).includes(filter);
+        card.classList.toggle('is-filtered-out',!visible);
+        copy?.classList.toggle('is-filtered-out',!visible);
+      });
+    }));
+'''
+          script_end='</script>'
+          if 'const projectFilterButtons=' not in s:
+              s = s.replace(script_end, js + script_end, 1)
+
+          p.write_text(s, encoding='utf-8')
+      - name: Commit changes and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "feat: add portfolio filtering and case studies" || true
+          git push
+          git rm .github/workflows/add-portfolio-upgrades.yml || true
+          git commit -m "chore: remove temporary portfolio upgrade workflow" || true
+          git push
