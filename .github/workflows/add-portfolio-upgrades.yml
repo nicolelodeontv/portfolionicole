@@ -3,6 +3,8 @@ name: Add portfolio upgrades
 on:
   push:
     branches: [main]
+  pull_request:
+    types: [opened, synchronize]
 
 permissions:
   contents: write
@@ -112,6 +114,7 @@ jobs:
           PY
 
       - name: Commit changes and remove temporary workflow
+        if: github.event_name == 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
