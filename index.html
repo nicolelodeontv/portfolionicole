@@ -46,7 +46,45 @@
       .hero h1 { font-size: clamp(2.35rem, 12.6vw, 3.8rem); }
       .project-visual h3 { font-size: clamp(1.75rem, 9vw, 2.55rem); }
     }
-  </style>
+  
+    /* hero-title-final */
+    main { overflow: visible !important; }
+    .hero { overflow: visible !important; }
+    .hero > .container, .hero-grid, .hero-grid > div { overflow: visible !important; min-height: 0; min-width: 0; }
+    .hero h1#hero-title {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: visible !important;
+      height: auto !important;
+      min-height: 0 !important;
+      line-height: 1.16 !important;
+      padding: .22em 0 .30em !important;
+      margin: 0 !important;
+      letter-spacing: -.05em !important;
+      box-sizing: border-box !important;
+      text-wrap: balance !important;
+    }
+    .hero h1#hero-title .gradient {
+      display: inline !important;
+      overflow: visible !important;
+      -webkit-box-decoration-break: clone !important;
+      box-decoration-break: clone !important;
+    }
+    @media (max-width: 720px) {
+      .hero h1#hero-title {
+        font-size: clamp(2.2rem, 10.9vw, 4.2rem) !important;
+        line-height: 1.14 !important;
+        padding: .20em 0 .28em !important;
+      }
+    }
+    @media (max-width: 420px) {
+      .hero h1#hero-title {
+        font-size: clamp(2.05rem, 10.7vw, 3.35rem) !important;
+        line-height: 1.14 !important;
+      }
+    }
+</style>
 </head>
 <body>
   <header class="site-header"><nav class="nav container" aria-label="Primary navigation"><a class="brand" href="#top"><span class="brand-dot" aria-hidden="true"></span><span class="brand-type">Nicole John Dela Cruz</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button><div class="nav-links" id="nav-links"><a href="#work">Projects</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav></header>
