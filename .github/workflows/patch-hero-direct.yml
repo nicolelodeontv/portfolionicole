@@ -1,4 +1,4 @@
-name: Fix hero clipping boundary
+name: Apply hero overflow patch
 on:
   push:
     branches: [main]
@@ -8,13 +8,15 @@ jobs:
   fix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            const { owner, repo } = context.repo;
-            const path = 'index.html';
-            const marker = '/* Hero overflow final fix */';
-            const css = `
+      - uses: actions/checkout@v4
+      - name: Apply final hero CSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '/* Hero overflow final fix */'
+          css = '''
     /* Hero overflow final fix */
     main { overflow: visible !important; }
     .hero, .hero-grid, .hero-grid > *, .hero .reveal { overflow: visible !important; }
@@ -34,28 +36,18 @@ jobs:
       box-decoration-break: clone !important;
     }
     @media (max-width: 720px) {
-      .hero h1#hero-title {
-        font-size: clamp(2.25rem, 11.2vw, 4.35rem) !important;
-        line-height: 1.12 !important;
-        padding: .16em 0 .24em !important;
-      }
+      .hero h1#hero-title { font-size: clamp(2.25rem, 11.2vw, 4.35rem) !important; line-height: 1.12 !important; padding: .16em 0 .24em !important; }
     }
     @media (max-width: 420px) {
-      .hero h1#hero-title {
-        font-size: clamp(2.1rem, 11vw, 3.45rem) !important;
-        line-height: 1.12 !important;
-      }
+      .hero h1#hero-title { font-size: clamp(2.1rem, 11vw, 3.45rem) !important; line-height: 1.12 !important; }
     }
-`;
-            const file = await github.rest.repos.getContent({ owner, repo, path, ref: 'main' });
-            if (Array.isArray(file.data)) throw new Error('index.html is a directory');
-            const content = Buffer.from(file.data.content, 'base64').toString('utf8');
-            if (!content.includes(marker)) {
-              const updated = content.replace('</style>', css + '  </style>', 1);
-              await github.rest.repos.createOrUpdateFileContents({
-                owner, repo, path, branch: 'main',
-                message: 'fix: remove hero clipping boundary',
-                content: Buffer.from(updated, 'utf8').toString('base64'),
-                sha: file.data.sha
-              });
-            }
+'''
+          if marker not in s:
+              s = s.replace('</style>', css + '  </style>', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "fix: prevent hero title clipping completely"
+          git push
