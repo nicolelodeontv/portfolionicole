@@ -1,0 +1,65 @@
+name: Fix hero title
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch hero title
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '/* Hero title clipping fix */'
+          css = '''
+    /* Hero title clipping fix */
+    .hero h1#hero-title {
+      display: block;
+      max-width: 100%;
+      overflow: visible;
+      line-height: 1.08 !important;
+      padding: .16em 0 .22em !important;
+      margin: 0 !important;
+      letter-spacing: -.055em;
+      box-sizing: border-box;
+    }
+    .hero h1#hero-title .gradient {
+      display: inline;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding-bottom: .06em;
+    }
+    @media (max-width: 720px) {
+      .hero h1#hero-title {
+        font-size: clamp(2.35rem, 11.8vw, 4.5rem) !important;
+        line-height: 1.07 !important;
+        padding: .14em 0 .20em !important;
+      }
+    }
+    @media (max-width: 420px) {
+      .hero h1#hero-title {
+        font-size: clamp(2.2rem, 11.6vw, 3.6rem) !important;
+        line-height: 1.08 !important;
+      }
+    }
+'''
+          if marker not in s:
+              s = s.replace('</style>', css + '  </style>', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit fix and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "fix: prevent hero title clipping"
+          git push
+          rm -f .github/workflows/fix-hero-title.yml
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: remove temporary hero title workflow"
+          git push
