@@ -1,0 +1,46 @@
+name: Remove phone number and refresh deployment
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize-phone:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Remove phone number from portfolio
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          old = '<a href="tel:+639770648530">+63 977 064 8530</a>'
+          new = ''
+          if old in s:
+              s = s.replace(old, new)
+              p.write_text(s, encoding='utf-8')
+              print('Phone link removed.')
+          else:
+              print('Phone link already absent; no source change needed.')
+          PY
+
+      - name: Commit sanitized portfolio
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+          else
+            git commit -m 'Remove phone number from portfolio'
+            git push
+          fi
