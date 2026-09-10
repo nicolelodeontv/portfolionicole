@@ -49,13 +49,21 @@ The portfolio positions Nicole at the intersection of creative production and te
 - Creative workflow automation
 - Client support and process improvement
 
-## 🚀 Featured Project
+## 🚀 Featured Projects
 
 ### SIF Tracker
 
 A production workload estimation tool that calculates time requirements across different production activities.
 
 Live website: https://sif-tracker-omega.vercel.app/
+
+### Backer Fee Assistant
+
+A browser-only calculator for discounted backer fees and customer-ready notes, including live calculations, discount presets, recent calculation history, reset support, and exact-format clipboard copying.
+
+Live website: https://backerfee.vercel.app/
+
+Repository: https://github.com/nicolelodeontv/backerfee
 
 ## 🛠️ Technology
 
